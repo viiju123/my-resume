@@ -1,0 +1,47 @@
+// Wait until the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Website is fully loaded and ready!');
+
+    // Add active class to the current navigation link
+    const navLinks = document.querySelectorAll('header nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            // Remove active class from all links
+            navLinks.forEach(nav => nav.classList.remove('active'));
+            
+            // Add active class to the clicked link
+            event.target.classList.add('active');
+        });
+    });
+
+    // Add a scroll-to-top button
+    const scrollButton = document.createElement('button');
+    scrollButton.textContent = '⬆️ Top';
+    scrollButton.style.position = 'fixed';
+    scrollButton.style.bottom = '20px';
+    scrollButton.style.right = '20px';
+    scrollButton.style.display = 'none';
+    scrollButton.style.padding = '10px 15px';
+    scrollButton.style.backgroundColor = '#333';
+    scrollButton.style.color = '#fff';
+    scrollButton.style.border = 'none';
+    scrollButton.style.borderRadius = '5px';
+    scrollButton.style.cursor = 'pointer';
+
+    document.body.appendChild(scrollButton);
+
+    // Show or hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    });
+
+    // Scroll to the top when button is clicked
+    scrollButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+

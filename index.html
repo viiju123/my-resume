@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume & Bio-data</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #ff6347;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 20px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .active {
+            color: #ff6347;
+        }
+
+        /* Scroll-to-top button */
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            padding: 10px 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #scrollToTop:hover {
+            background-color: #ff6347;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="navigateTo('index.html')" class="active">Home</a></li>
+                <li><a href="#" onclick="navigateTo('resume.html')">Resume</a></li>
+                <li><a href="#" onclick="navigateTo('bio.html')">Bio-data</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="background-color: rgb(92, 92, 96);">
+        <section>
+            <h1>Welcome to My website!!!!!!!</h1>
+            <p>here you can check my resume and biodata</p>
+        </section>
+    </main>
+
+    
+
+    <button id="scrollToTop">⬆️ Top</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Website is fully loaded and ready!');
+
+            // Navigation using window.location
+            window.navigateTo = function(fileName) {
+                window.location.href = fileName;
+            };
+
+            // Highlight active link
+            const navLinks = document.querySelectorAll('header nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    event.target.classList.add('active');
+                });
+            });
+
+            // Scroll-to-top button functionality
+            const scrollButton = document.getElementById('scrollToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    scrollButton.style.display = 'block';
+                } else {
+                    scrollButton.style.display = 'none';
+                }
+            });
+
+            scrollButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
